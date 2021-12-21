@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Đăng Nhập</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type ="text/css" href = "./css/index.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type ="text/javascript" src = "./web.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+</head>
+
+<body>
+<div class = "index">
+    <img id ="bg" src="image/BG-HUST.jpg">
+    <div class = "Khung">
+        <div class = "anh"> <img src="./image/Hust.jpg"></div>
+        <form class = "login">
+                <span class="login100-form-title">
+                    <b>ĐĂNG NHẬP HỆ THỐNG</b>
+                </span>
+                <form action="">
+                    <div class="wrap-input100 validate-input">
+                        <span><i class="far fa-user"></i></span>
+                        <input class="input100" type="text" placeholder="Tài khoản" name="username"
+                            id="username">
+                       
+                        <!-- <span><i class="far fa-user"></i></span>
+                            <span class="symbol-input100">
+                            <i class='bx bx-user'></i>
+                        </span> --> 
+                    </div>
+                    <div class="wrap-input100 validate-input">
+                        <span><i class="fas fa-lock"></i></span>
+                        <input autocomplete="off" class="input100" type="password" placeholder="Mật khẩu"
+                            name="current-password" id="password-field">
+                        
+                        <span toggle="#password-field" class="bx fa-fw bx-hide field-icon click-eye"></span>
+                        <span class="focus-input100"></span>
+                        
+                    </div>
+                    <!--=====LINK TÌM MẬT KHẨU======-->
+                    <div class="text-right">
+                        <a class="txt2" href="/forgot.html">
+                            Quên mật khẩu
+                        </a>
+                    </div>
+
+                    <!--=====ĐĂNG NHẬP======-->
+                    <div class="container-login100-form-btn">
+                        <input type="button" value="Đăng nhập" id="submit" onclick="validate()" />
+                    </div>
+                </form>
+                <div class="text-center p-t-70 txt2">
+                    HUST_OneLoveOneFuture | 
+                    <script type="text/javascript">document.write(new Date().getFullYear());</script> <a
+                        class="txt2" href="https://www.facebook.com/ThuTrang.Phan0311/"> Nhóm XXX </a>
+                </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //show - hide mật khẩu
+    function myFunction() {
+        var x = document.getElementById("myInput");
+        if (x.type === "password") {
+            x.type = "text"
+        } else {
+            x.type = "password";
+        }
+    }
+    $(".click-eye").click(function () {
+        $(this).toggleClass("bx-show bx-hide");
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") == "password") {
+            input.attr("type", "text");
+        } else {
+            input.attr("type", "password");
+        }
+    });
+</script>
+
+</body>
+
+</html>

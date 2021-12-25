@@ -77,20 +77,18 @@ ul li{
     text-align: left;
     border: #f2f2f2 solid 1px; 
 }
-ul li a{
+ul li a, span a{
     /* display: block;  */
     padding: 5px;
     color: #333;
     text-decoration: none;
     font-weight: bold;
     font-size: 15px;
-    /* background-color: rgb(126, 177, 245);
-    height: 50px;  */
     line-height: 21px;
 }
 ul li a:hover{
     text-decoration: none;
-    background-color: rgb(245, 116, 116);
+    background-color: rgb(241, 129, 129);
 }
 
 input{
@@ -99,9 +97,6 @@ input{
     font-size: 18px;
 }
 
-button:hover {
-	cursor:pointer;
-}
 #myTable {
     border-collapse: collapse;
     width: 100%;
@@ -149,6 +144,24 @@ thead {
     margin: 5px;
     font-size: 15px;
     font-weight: bold;
+}
+
+.info-stu{
+    display: flex;
+    margin-top:0px;
+}
+.info-stu div span{
+    margin: 20px;
+    margin-top: 10px;
+    padding-left:30px;
+    position: relative;
+    float: left;
+    line-height: 30px;
+    font-size: 16px;
+}
+hr{
+    background-color: rgb(43, 21, 241);
+    padding: 3px;
 }
 
 :root {

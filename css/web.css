@@ -91,10 +91,10 @@ ul li a:hover{
     background-color: rgb(241, 129, 129);
 }
 
-input{
+div input{
     width: 300px;
-    padding: 10px;
-    font-size: 18px;
+    padding: 7px;
+    font-size: 15px;
 }
 
 #myTable {
@@ -103,7 +103,8 @@ input{
     border: 1px solid #ddd;
     font-size: 20px;
     padding: 0px !important;
-  }
+    margin: 10px;
+}
   
   #myTable th, td {
     text-align: center;

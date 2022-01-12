@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- sweetalert -->
+    <link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
+    <script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
 </head>
 
 <body>
@@ -52,9 +55,9 @@
                     <th>STT</th>
                     <th>MSSV</th>
                     <th>Họ Tên</th>
-                    <th>Nhập điểm quá trình</th>
+                    <!-- <th>Nhập điểm quá trình</th> -->
                     <th>Điểm QT</th>
-                    <th>Nhập điểm cuối kì</th>
+                    <!-- <th>Nhập điểm cuối kì</th> -->
                     <th>Điểm CK</th>
                     <th>Điểm tổng kết HP</th>
                     <th>Điểm Chữ</th>
@@ -66,9 +69,24 @@
                     <td>1</td>
                     <td>20194691</td>
                     <td>Phan Thị Thu Trang</td>
-                    <td><input type = "number" name = "grade1" step = "0.5" ></td>
+                    <td class = "editable"></td>
+                    <td class = "editable"></td>
                     <td></td>
-                    <td><input type = "number" name = "grade1" step = "0.5" ></td>
+                    <td></td>
+                    <td>
+                        <a class="add" title="Lưu Lại" data-toggle="tooltip"><i class="fa fa-floppy-o"
+                                aria-hidden="true"></i></a>
+                        <a class="edit" title="Sửa" data-toggle="tooltip"><i class="fa fa-pencil"
+                                aria-hidden="true"></i></a>
+                        <!-- <a class="delete" title="Xóa" data-toggle="tooltip"><i class="fa fa-trash-o"
+                                aria-hidden="true"></i></a> -->
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <td>1</td>
+                    <td>20194691</td>
+                    <td>Phan Thị Thu Trang</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -78,27 +96,12 @@
                     <td>1</td>
                     <td>20194691</td>
                     <td>Phan Thị Thu Trang</td>
-                    <td><input type = "number" name = "grade1" step = "0.5" ></td>
-                    <td></td>
-                    <td><input type = "number" name = "grade1" step = "0.5" ></td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>20194691</td>
-                    <td>Phan Thị Thu Trang</td>
-                    <td><input type = "number" name = "grade1" step = "0.5" ></td>
                     <td></td>
-                    <td><input type = "number" name = "grade1" step = "0.5" ></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
-                </tr>
+                </tr> -->
             </tbody>
         </table>
         <br>
@@ -108,5 +111,31 @@
     </form>
 
     <footer></br>HUST &copy; @author_PhanTrang</footer>
+    <script>
+         $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+            var actions = $("table td:last-child").html();
+            $(document).on("click", ".edit", function () {
+                $(this).parents("tr").find(".editable").each(function () {
+                    $(this).html('<input type="text" class="form-control" value="' + $(this)
+                        .text() + '">');
+                });
+                $(this).parents("tr").find(".add, .edit ").toggle();
+            });
+            $(document).on("click", ".add", function () {
+                var empty = false;
+                var input = $(this).parents("tr").find('input[type="text"]');
+                
+                $(this).parents("tr").find(".error").first().focus();
+                if (!empty) {
+                    input.each(function () {
+                        $(this).parent("td").html($(this).val());
+                        swal("Thành Công", "Bạn Đã Cập Nhật Thành Công", "success");
+                    });
+                    $(this).parents("tr").find(".add, .edit").toggle();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -117,8 +117,9 @@
             var actions = $("table td:last-child").html();
             $(document).on("click", ".edit", function () {
                 $(this).parents("tr").find(".editable").each(function () {
-                    $(this).html('<input type="text" class="form-control" value="' + $(this)
+                    $(this).html('<input type="text" class="form-control" id = "nhapdiem" value="' + $(this)
                         .text() + '">');
+                        
                 });
                 $(this).parents("tr").find(".add, .edit ").toggle();
             });
@@ -131,6 +132,7 @@
                     input.each(function () {
                         $(this).parent("td").html($(this).val());
                         swal("Thành Công", "Bạn Đã Cập Nhật Thành Công", "success");
+                        alert($(this).val()); // In test giá trị ===============================--------------
                     });
                     $(this).parents("tr").find(".add, .edit").toggle();
                 }

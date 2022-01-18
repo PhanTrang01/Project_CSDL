@@ -68,6 +68,7 @@
 
             </tbody>
         </table>
+        <div class = fromadd></div>
     </div>
     <script type="text/javascript">
     //Thêm
@@ -77,21 +78,25 @@
             $(".add-new").click(function () {
                 $(this).attr("disabled", "disabled");
                 var index = $("table tbody tr:last-child").index();
+                var stu_code = "MSSV";
                 var row = '<tr>' +
-                    '<td><input type="text" class="form-control" name="MSSV" id="MSSV" value="" placeholder="Nhập MSGV"></td>' +
+                    '<td><input type="text" class="form-control" name="MSSV" id="MSSV" value=" '+ stu_code +' " placeholder="Nhập MSGV" disabled></td>' +
                     '<td><input type="text" class="form-control" name="name" id="name" placeholder="Nhập Tên"></td>' +
                     '<td><input type="text" class="form-control" name="gioitinh" id="gioitinh" placeholder="Nhập Giới Tính"></td>' +
-                    '<td><input type="text" class="form-control" name="namsinh" id="namsinh" value="" placeholder="Nhập Ngày Sinh"></td>' +
+                    '<td><input type="date" class="form-control" name="namsinh" id="namsinh" value="" placeholder="Nhập Ngày Sinh"></td>' +
                      '<td>' + actions + '</td>' +
                     '</tr>';
-                $("table").append(row);
-                $("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
+         //       $(".fromadd").html(row);
+         //       var append_row = 
+                $("table").prepend(row);
+                $("table tbody tr").eq(0).find(".add, .edit").toggle();
                 $('[data-toggle="tooltip"]').tooltip();
             });
             //Kiểm tra rỗng
             $(document).on("click", ".add", function () {
                 var empty = false;
-                var input = $(this).parents("tr").find('input[type="text"]');
+                //var input = $(this).parents("tr").find('input[type="text"]');
+                var input = $(this).parents("tr").find('input');
                 input.each(function () {
                     if (!$(this).val()) {
                         $(this).addClass("error");
@@ -102,6 +107,9 @@
                         swal("Thông Báo!", "Bạn Chưa Nhập Dữ Liệu", "warning");
                     }
                 });
+                //kiểm tra kiểu số
+                var letter=/^[0-9]+$/;
+
                 $(this).parents("tr").find(".error").first().focus();
                 if (!empty) {
                     input.each(function () {
@@ -110,12 +118,21 @@
                     });
                     $(this).parents("tr").find(".add, .edit").toggle();
                     $(".add-new").removeAttr("disabled");
+                    $("#namsinh").attr("disabled");
                 }
             });
             // Sửa
             $(document).on("click", ".edit", function () {
-                $(this).parents("tr").find("td:not(:last-child)").each(function () {
+                $(this).parents("tr").find("td:eq(1)").each(function () {
+                    $(this).html('<input type="text" class="form-control" id="name" value="' + $(this)
+                        .text() + '">');
+                });
+                $(this).parents("tr").find("td:eq(2)").each(function () {
                     $(this).html('<input type="text" class="form-control" value="' + $(this)
+                        .text() + '">');
+                });
+                $(this).parents("tr").find("td:eq(3)").each(function () {
+                    $(this).html('<input type="date" class="form-control" value="' + $(this)
                         .text() + '">');
                 });
                 $(this).parents("tr").find(".add, .edit ").toggle();

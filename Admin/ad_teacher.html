@@ -112,10 +112,30 @@
 
                 $(this).parents("tr").find(".error").first().focus();
                 if (!empty) {
+                    let arr = [];
                     input.each(function () {
                         $(this).parent("td").html($(this).val());
-                        swal("Thành Công", "Bạn Đã Cập Nhật Thành Công", "success");
+                        arr.push($(this).val());
+                        // console.log(typeof $(this).val());
+                        
                     });
+                    console.log(arr);
+                    $.ajax({
+                        url:'http://localhost:3000',
+                        type:'POST',
+                        data:{
+                        name:arr[0],
+                        gender:arr[1],
+                        dateOfBirth:arr[2]
+                        },
+                        success:function(response){
+                            if(response){
+                                swal("Thành Công", "Bạn Đã Cập Nhật Thành Công", "success");
+                            }else{
+                                swal("That bai", "Loi server", "error");
+                            }
+                        }
+                    })
                     $(this).parents("tr").find(".add, .edit").toggle();
                     $(".add-new").removeAttr("disabled");
                     $("#namsinh").attr("disabled");
